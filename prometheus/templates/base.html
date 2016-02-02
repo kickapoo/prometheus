@@ -1,0 +1,92 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+      <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+      {%- block metas %}
+        <meta name="description" content="Team Volunteer Needs Management Tool">
+        <meta name="keywords" content="ceo, volunteer, crisis, refugees, greece, chios">
+        <meta name="author" content="All the world">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {%- endblock metas %}
+
+      {%- block styles %}
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='imgs/logo-prometheus.png') }}"/>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- MetisMenu -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.2.0/metisMenu.min.css">
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
+        <!-- DataTables Responsive CSS -->
+        <link href="https://cdn.datatables.net/responsive/2.0.0/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <!-- Datetime Picker -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.css">
+        <!-- Custom sd-admin2 CSS -->
+        <link href="{{ url_for('static', filename='libs/sb-admin-2/sb-admin-2.css') }}" rel="stylesheet">
+        <!-- Bootstap Switch CSS -->
+        <link href="{{ url_for('static', filename='libs/bootstrap-switch/bootstrap-switch.css') }}" rel="stylesheet">
+        <!-- Leaflet css -->
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+        <!-- Prometheus custum CSS -->
+        <link href="{{ url_for('static', filename='css/prometheus.css') }}"rel="stylesheet" media="screen" title="no title" charset="utf-8">
+
+      {%- endblock styles %}
+
+      {%- block extra_css %}
+
+      {%- endblock extra_css %}
+
+    {%- endblock head %}
+  </head>
+  <body {% block body_attribs %} {% endblock body_attribs %}>
+    {% block body -%}
+
+      {% block menus %}
+      {%- endblock menus %}
+
+      {% block content -%}
+      {%- endblock content %}
+
+      {% block scripts %}
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.2.0/metisMenu.min.js"></script>
+        <!-- DataTables JavaScript -->
+        <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+        <!-- DataTable Bootstrap -->
+        <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+        <!-- DatePicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+        <!-- SD-Admin 2 - Theme JavaScript -->
+        <script src="{{ url_for('static', filename='libs/sb-admin-2/sb-admin-2.js') }}"></script>
+        <!-- Bootstap Switch -->
+        <script src="{{ url_for('static', filename='libs/bootstrap-switch/bootstrap-switch.js') }}"></script>
+        <!-- Leafletjs -->
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <!-- MakiMarkers -->
+        <script src="{{ url_for('static', filename='libs/leafletMakiMakers/Leaflet.MakiMarkers.js') }}"></script>
+        <!-- Ckeditor -->
+        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+        <!-- Flask-Moment -->
+        {{ moment.include_moment() }}
+        <!-- Prometheus js -->
+        <script src="{{ url_for('static', filename='js/prometheus.js')}}"></script>
+      {%- endblock scripts %}
+
+      {%- block extra_js %}
+      {%- endblock extra_js %}
+
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}

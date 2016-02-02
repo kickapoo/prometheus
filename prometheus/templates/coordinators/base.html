@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+
+{% block body_attribs %} class="zoom" {% endblock body_attribs %}
+
+{% block menus %}
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <span style='font-size:18px'>{{ moment().format('MMMM Do YYYY, h:mm:ss a') }}</span><br>
+                <sup style='font-size:12px' class='text-success'> Login as:</sup>
+                <sup style='font-size:12px'> {{ current_user.email }} </sup>
+            </a>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <!-- /.dropdown-user -->
+            </li>
+            <li>
+              <a href="{{ url_for('volunteer.index')}}"> View as Volunteer </a>
+            </li>
+            <li>
+              <a onclick="location.reload();"
+                 data-toggle="tooltip_refresh" data-placement="bottom" title="refresh">
+                 <i class="fa fa-refresh fa-fw"></i>
+               </a>
+            </li>
+            <li>
+              <a href="{{ url_for('volunteer.change_password') }}" data-toggle="tooltip_change" data-placement="bottom" title="change password">
+                <i class="fa fa-key"></i>
+               </a>
+            </li>
+            <li>
+              <a href="{{ url_for('auth.logout') }}"
+                 data-toggle="tooltip_logout" data-placement="bottom" title="logout">
+                 <i class="fa fa-power-off"></i>
+               </a>
+             </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+        <!-- Sidebar -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                  <br>
+                  <li>
+                    <a href="{{ url_for('coordinator.overview') }}">
+                      <i class="fa fa-map"></i>&nbsp;&nbsp;&nbsp;&nbsp;Overview</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('coordinator.teams') }}">
+                      <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;Teams</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('coordinator.volunteers') }}"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Volunteers</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('coordinator.spots') }}"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spots</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('coordinator.needs') }}"><i class="fa fa-balance-scale"></i>&nbsp;&nbsp;&nbsp;Needs</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('coordinator.announcements') }}"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;&nbsp;Announcements</a>
+                  </li>
+                </ul>
+                <hr>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      {% block page_content %}
+      {% endblock %}
+    </div>
+</div>
+<!-- /#wrapper from  menus  -->
+{% endblock %}

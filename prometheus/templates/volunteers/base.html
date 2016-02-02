@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body_attribs %} class="zoom" {% endblock body_attribs %}
+
+{% block menus %}
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            <span style='font-size:18px'>{{ moment().format('MMMM Do YYYY, h:mm:ss a') }}</span><br>
+            <sup style='font-size:12px' class='text-success'> Login as:</sup>
+            <sup style='font-size:12px'> {{ current_user.email }} </sup>
+        </a>
+      </div><!-- /.navbar-header -->
+      <ul class="nav navbar-top-links navbar-right">
+          <li>
+            <a onclick="location.reload();" data-toggle="tooltip_refresh" data-placement="bottom" title="refresh">
+               <i class="fa fa-refresh fa-fw"></i>
+             </a>
+          </li>
+          <li>
+            <a href="{{ url_for('auth.logout') }}" data-toggle="tooltip_logout" data-placement="bottom" title="logout">
+               <i class="fa fa-power-off"></i>
+             </a>
+           </li>
+           <li>
+             <a href="{{ url_for('volunteer.change_password') }}" data-toggle="tooltip_change" data-placement="bottom" title="change password">
+               <i class="fa fa-key"></i>
+              </a>
+           </li> <!-- /.dropdown -->
+      </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div>
+      {% block page_content %}
+      {% endblock %}
+    </div>
+</div><!-- /#wrapper from  menus  -->
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'coordinators/base.html' %}
+{% import "macros.html" as macros %}
+
+
+{% block title %} {{ page.title }} {% endblock%}
+
+{% block page_content %}
+{{ macros.flash_message() }}
+
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <form class="" action="#" method="post">
+        {{ form.hidden_tag() }}
+        <a class="btn btn-xs btn-primary" href="{{ page.back }}">
+          <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <button type="submit" class="btn btn-xs btn-success" href="{{ url_for('coordinator.volunteers') }}"><i class="fa fa-save"></i> Save</button>
+        <hr>
+        <fieldset>
+          <legend style="font-size:18px"> Basic Information </legend>
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="fa fa-venus-mars"></span></span>
+              {{ form.gender(class="form-control") }}
+          </div>
+              {{ macros.field_errors(form.gender) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="fa fa-user"></span></span>
+              {{ form.fullname(class="form-control", placeholder="Full Name") }}
+          </div>
+              {{ macros.field_errors(form.fullname) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+              {{ form.email(class="form-control", placeholder="Email") }}
+          </div>
+              {{ macros.field_errors(form.email) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><i class="fa fa-mobile"></i> International Phone</span>
+              {{ form.international_phone(class="form-control", placeholder="International Phone") }}
+          </div>
+              {{ macros.field_errors(form.international_phone) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><i class="fa fa-mobile"></i> Local</span>
+              {{ form.local_phone(class="form-control", placeholder="Local Phone") }}
+          </div>
+              {{ macros.field_errors(form.local_phone) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="fa fa-globe"></span></span>
+              {{ form.country_id(class="form-control") }}
+          </div>
+              {{ macros.field_errors(form.country_id) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="fa fa-users"></span></span>
+              {{ form.team_id(class="form-control") }}
+          </div>
+              {{ macros.field_errors(form.team_id) }}
+          <div class="input-group date" data-provide="datepicker"
+               data-date-format="dd/mm/yyyy">
+          <span style="font-size:12px" class="input-group-addon">Birthday</span>
+              {{ form.birthday(class="form-control") }}
+          </div>
+              {{ macros.field_errors(form.birthday) }}
+          <div class="input-group">
+            <span style="font-size:12px" class="input-group-addon">Languages</span>
+              {{ form.language_choices(class="checkbox") }}
+          </div>
+              {{ macros.field_errors(form.language_choices) }}
+          <div class="input-group">
+            <span style="font-size:12px" class="input-group-addon">Skills</span>
+              {{ form.skills_choices(class="checkbox") }}
+          </div>
+            {{ macros.field_errors(form.skills_choices) }}
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend style="font-size:18px">Availibility Period</legend>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="input-group date" data-provide="datepicker"
+                     data-date-format="dd/mm/yyyy">
+                  <span class="input-group-addon">from</span>
+                  {{ form.availiable_from(class="form-control") }}
+                </div>
+                  {{ macros.field_errors(form.availiable_from) }}
+              </div>
+              <div class="col-xs-6">
+                <div class="input-group date" data-provide="datepicker"
+                     data-date-format="dd/mm/yyyy">
+                  <span class="input-group-addon">to</span>
+                  {{ form.availiable_to(class="form-control") }}
+                </div>
+                  {{ macros.field_errors(form.availiable_to) }}
+              </div>
+            </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend style="font-size:18px"> Daily Schedule Preference</legend>
+            <div class="row">
+              <div class="col-xs-6">
+                {{ form.day_choices(class="checkbox") }}
+              </div>
+              <div class="col-xs-6">
+                {{ form.hour_choices(class="checkbox") }}
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend style="font-size:18px"> System Access</legend>
+            <div class="input-group input-group-sm ">
+              {{ form.access(class="form-control") }}
+            </div>
+              {{ macros.field_errors(form.access) }}
+            <br>
+          </fieldset>
+          <fieldset>
+            <legend style="font-size:18px"> is Coordinator</legend>
+            <div class="input-group input-group-sm ">
+              {{ form.is_coordinator(class="form-control") }}
+            </div>
+              {{ macros.field_errors(form.is_coordinator) }}
+            <br>
+          </fieldset>
+          <fieldset>
+            <legend style="font-size:18px"> Notes</legend>
+            {{ form.notes(class="form-control") }}
+          </fieldset>
+        </form>
+        <hr style="width:50%">
+        <hr style="width:25%">
+        <hr style="width:15%">
+      </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}

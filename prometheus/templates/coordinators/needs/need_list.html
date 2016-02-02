@@ -1,0 +1,78 @@
+{% extends 'coordinators/base.html' %}
+{% import "macros.html" as macros %}
+
+{% block title %} {{ page.title }} {% endblock%}
+
+{% block page_content %}
+{% set update_url = page.edit_url %}
+{% set delete_url = page.delete_url %}
+{{ macros.flash_message() }}
+
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="btn btn-xs btn-success" href="{{ url_for(update_url) }}">
+            <i class="fa fa-plus"></i> Add New
+          </a>
+          <a class="btn btn-xs btn-primary" href="{{ url_for('coordinator.history_needs') }}">
+            <i class="fa fa-calendar"></i> History
+          </a>
+        </div><!-- /.panel-heading -->
+        <div class="panel-heading">
+          <span style="font-size:18px" class="text-success">
+            <p>{{ moment().format('MMMM Do YYYY, h:mm:ss a') }}.</p>
+          </span>
+        </div><!-- /.panel-heading -->
+        <div class="panel-body">
+          {% if obj_list %}
+          <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-prometheus">
+              <thead>
+                <tr>
+                  <th> Spot </th>
+                  <th> Need </th>
+                  <th> Scheduled for </th>
+                  <th> Volunteers Needed </th>
+                  <th> Volunnters Singed </th>
+                  <th> Actions </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for obj in obj_list %}
+                <tr>
+                  <td> {{ obj.spots.name }} </td>
+                  <td> {{ obj.name }} </td>
+                  <td> {{ macros.hours(obj.hour_choices) }} </td>
+                  <td>
+                    <span class="text-success">{{ obj.volunteer.all()|length}}</span> / {{ obj.number_of_volunters }}
+                  </td>
+                  <td>
+                    {% if obj.volunteer %}
+                      {% for volunteer in obj.volunteer.all() %}
+                        <a href="{{ url_for('coordinator.update_volunteer', id=volunteer.id )}}">{{ volunteer.fullname }}</a>,
+                      {% endfor %}
+                    {% else %}
+                      <span class="text-danger"> No Volunteer have yet closed this need</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <a data-toggle="tooltip_edit" data-placement="bottom" title="edit" href="{{ url_for(update_url, id=obj.id) }}"><i class="fa fa-edit"></i></a>
+                    <a onclick="return confirm('Are you sure you want to delete this item?');" data-toggle="tooltip_delete" data-placement="bottom" title="delete" href="{{ url_for(delete_url, id=obj.id) }}"><i class="fa fa-trash"></i></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+            <span class='text-warning'> Nothing to show, please enter a new Need ...</span>
+          {% endif %}
+        </div>
+      </div>
+    </div><!-- /.col-lg-12 -->
+  </div><!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}

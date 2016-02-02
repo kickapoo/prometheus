@@ -1,0 +1,39 @@
+{% extends 'coordinators/base.html' %}
+{% import "macros.html" as macros %}
+
+
+{% block title %} {{ page.title }} {% endblock%}
+
+{% block page_content %}
+{{ macros.flash_message() }}
+
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <form class="" action="#" method="post">
+        {{ form.hidden_tag() }}
+        <a class="btn btn-xs btn-primary" href="{{ page.back }}">
+          <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <button type="submit" class="btn btn-xs btn-success" href="{{ url_for('coordinator.announcements') }}"><i class="fa fa-save"></i> Save</button>
+        <hr>
+        {{ macros.field_errors(form.announcement_choices) }}
+        <div class="input-group input-group-sm ">
+          <span class="input-group-addon"><span class=""></span></span>
+          {{ form.title(class="form-control", placeholder="Title" ) }}
+        </div>
+          {{ macros.field_errors(form.title) }}
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon"><span class=""></span></span>
+          {{ form.body(class="form-control", placeholder="Main Text") }}
+        </div>
+          {{ macros.field_errors(form.body) }}
+        <div class="input-group input-group-sm ">
+          {{ form.announcement_choices(class="radio") }}
+        </div>
+      </form>
+    </div><!-- /.col-lg-12 -->
+  </div><!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}

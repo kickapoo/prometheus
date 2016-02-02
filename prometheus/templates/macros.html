@@ -1,0 +1,182 @@
+{% macro flash_message() %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div id="general_message" class="alert alert-info alert-fixed">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          {{ message|safe }}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+{% endmacro %}
+
+{% macro announcement_type(type) %}
+    {% if type == '0' %}
+      <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-general.png') }}" alt="" />
+    {% elif type == '1'%}
+      <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-need.png') }}" alt="" />
+    {% elif type == '2'%}
+      <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-emergency.png') }}" alt="" />
+    {% endif%}
+{% endmacro %}
+
+{% macro announcement_type_txt(type) %}
+    {% if type == '0' %}
+      <span class="text-primary"> General</span>
+    {% elif type == '1'%}
+      <span class="text-success"> Need</span>
+    {% elif type == '2'%}
+      <span class="text-danger"> Emergency</span>
+    {% endif%}
+{% endmacro %}
+
+{% macro field_errors(field) %}
+  {% if field.errors %}
+    {% for error in field.errors %}
+    <span style="font-size:12px" class="help-block">
+      <i class="fa fa-exclamation text-danger"></i> {{ error }}
+    </span>{% endfor %}
+  {% endif %}
+{% endmacro %}
+
+{% macro skills(user_list) %}
+  {% for skill in user_list %}
+    {% if skill == '0' %}
+        First Aid,
+    {% elif skill == '1'%}
+        Cooking,
+    {% elif skill == '2'%}
+        Lifting,
+    {% elif skill == '3'%}
+        Building,
+    {% elif skill == '4'%}
+        Electorical Circits,
+    {% elif skill == '5'%}
+        Diving,
+    {% elif skill == '6'%}
+        Driving Car,
+    {% elif skill == '7'%}
+        Driving Motor,
+    {% endif%}
+  {% endfor %}
+{% endmacro %}
+
+{% macro days(user_days_list) %}
+  {% for day in user_days_list %}
+    {% if day == '1' %}
+        Monday,
+    {% elif day == '2'%}
+        Tuesday,
+    {% elif day == '3'%}
+        Wednesday,
+    {% elif day == '4'%}
+        Thursday,
+    {% elif day == '5'%}
+        Friday,
+    {% elif day == '6'%}
+        Saturday,
+    {% elif day == '7'%}
+        Sunday,
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro hours(user_hour_list) %}
+  {% for hour in user_hour_list %}
+    {% if hour == '1' %}
+        Evening,
+    {% elif hour == '2'%}
+        Night,
+    {% elif hour == '3'%}
+      Flexible-All Day,
+    {% elif hour == '0'%}
+        Morning,
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro language(user_language_list) %}
+  {% for l in user_language_list %}
+    {% if l == '0' %}
+        Arabic,
+    {% elif l == '1'%}
+        Farsi,
+    {% elif l == '2'%}
+        Greek,
+    {% elif l == '3'%}
+        Other,
+    {% endif%}
+  {% endfor %}
+{% endmacro %}
+
+{% macro header_weather(weather) %}
+  <h2>
+      <img src="http://openweathermap.org/img/w/{{weather.get_weather_icon_name()}}.png">
+      {{ weather.get_temperature(unit='celsius').temp}} °C |
+      <span style="font-size:24px" class="text-success">{{ weather.get_detailed_status() }}</span>
+  </h2>
+{% endmacro %}
+
+{% macro vertical_table_weather(weather) %}
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td><b>Wind</b></td>
+        <td>
+          Speed: <span class="text-success">{{ weather.get_wind().speed }}</span> m/s <br>
+          Direction: <span class="text-success">{{ weather.get_wind().deg }}</span>°
+        </td>
+      </tr>
+      <tr>
+        <td><b>Rainfall</b></td>
+        <td>
+          {% if  weather.get_rain()['3h'] %}
+            <span class="text-success">{{ weather.get_rain()['3h'] }}</span> mm <br>
+          {% else %}
+            -
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td><b>Temperature</b></td>
+        <td>
+          Average: <span class="text-success">{{ weather.get_temperature(unit='celsius').temp}}</span> °C <br>
+          Max: <span class="text-success">{{ weather.get_temperature(unit='celsius').temp_max}} </span>°C <br>
+          Min: <span class="text-success">{{ weather.get_temperature(unit='celsius').temp_min}} </span>°C <br>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Cloudiness</b></td>
+        <td>
+          <span class="text-success">{{ weather.get_status() }}</span>, {{ weather.get_clouds()}} %
+        </td>
+      </tr>
+      <tr>
+        <td><b>Pressure</b><br></td>
+        <td>
+          Ground Level: <span class="text-success">{{ weather.get_pressure().press }}</span> hpa <br>
+          Sea Level: <span class="text-success">{{ weather.get_pressure().sea_level }} </span> hpa
+        </td>
+      </tr>
+      <tr>
+        <td><b>Humidity</b></td>
+        <td>
+          <span class="text-success">{{ weather.get_humidity() }}</span> %
+        </td>
+      </tr>
+      <tr>
+        <td><b>Sunrise</b></td>
+        <td>
+          <span class="text-success">{{ weather.get_sunrise_time(timeformat='iso')}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Sunset</b></td>
+        <td>
+          <span class="text-success">{{ weather.get_sunset_time(timeformat='iso')}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endmacro %}

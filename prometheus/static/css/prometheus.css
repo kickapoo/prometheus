@@ -1,0 +1,17 @@
+.alert-fixed {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px
+}
+
+.zoom{
+  zoom: 75%;
+ }
+
+.zoom_white_background {
+  zoom: 75%;
+  background-color: rgba(255,255,255,.15);
+ }

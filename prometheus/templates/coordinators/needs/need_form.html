@@ -1,0 +1,48 @@
+{% extends 'coordinators/base.html' %}
+{% import "macros.html" as macros %}
+
+
+{% block title %} {{ page.title }} {% endblock%}
+
+{% block page_content %}
+{{ macros.flash_message() }}
+
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <form class="" action="#" method="post">
+        {{ form.hidden_tag() }}
+        <a class="btn btn-xs btn-primary" href="{{ page.back }}">
+          <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <button type="submit" class="btn btn-xs btn-success" href="{{ url_for('coordinator.needs') }}"><i class="fa fa-save"></i> Save</button>
+        <hr>
+        <div class="input-group input-group-sm ">
+          <span class="input-group-addon"><span class="fa fa-balance-scale"></span></span>
+          {{ form.name(class="form-control", placeholder="Name") }}
+        </div>
+          {{ macros.field_errors(form.name) }}
+        <div class="input-group input-group-sm ">
+          <span class="input-group-addon"><span class="fa fa-map-marker"></span></span>
+          {{ form.spot_id(class="form-control") }}
+        </div>
+          {{ macros.field_errors(form.spot_id) }}
+          <div class="input-group input-group-sm ">
+            <span class="input-group-addon"><span class="fa fa-users"></span></span>
+            {{ form.number_of_volunters(class="form-control") }}
+          </div>
+          {{ macros.field_errors(form.number_of_volunters) }}
+          <br>
+          <fieldset>
+            <legend> Schedule Period:</legend>
+            <div class="input-group input-group-sm ">
+              {{ form.hour_choices(class="radio") }}
+            </div>
+              {{ macros.field_errors(form.hour_choices) }}
+          </fieldset>
+        </form>
+      </div> <!-- /.col-lg-12 -->
+    </div> <!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}
