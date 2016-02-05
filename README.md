@@ -20,7 +20,7 @@ As a sequence of the above, Coordinators know which the Need cycle and from whic
 
 Demo case : [demo.prometheus.online](http://demo.prometheus.online/)
 
-Chios island: [chios.prometheus.online](http://demo.prometheus.online/)
+Chios island: [chios.prometheus.online](http://chios.prometheus.online/)
 
 ### How this project started?
 Prometheus started as part of [Informatics & Communications Technologies for Development, Aid, Support and Collaboration (ICT4dascgr)](http://groupspaces.com/ICT4dascgr/) actions to support Volunteers that take part on helping refugees across Aegean, Greek islands. There are other tools that serve the same goal but Prometheus wants to stand among them through the simplicity it offers. Prometheus, does what it says and say what is does, nothing more or nothing else.
