@@ -49,7 +49,10 @@ Assuming that the reader has some pre-knowledge using ternimal and command line,
 	5. $ /venv/bin/pip install -r requirement.txt
 	6. $ /venv/bin/python manager.py init_prometheus
 	7. $ /venv/bin/python manager.py runserver
-	8. Go to 127.0.0.1:5000 or localhost:5000 and enter system using the credentials: email: admin@prometheus.online, pass: admin
+	8. Go to 127.0.0.1:5000 or localhost:5000i
+	9. Enter system using the credentials: 
+	    email: admin@prometheus.online
+	    pass: admin
 
 ### Prometheus File structure
 	- config
