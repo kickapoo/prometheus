@@ -55,7 +55,7 @@
         <div class="panel-heading text-center">
           Last Update:
           <h5>
-            <span style="font-size:18px" class="text-warning"> {{ moment(last_updated).fromTime(g.now) }} </span>
+            <span style="font-size:18px" class="text-warning"> {{ moment(g.now).fromTime(last_updated) }} </span>
           </h5>
           <hr>
           <p class="bg-success text-center">OPEN {{ spots_open_count }} #</p>
