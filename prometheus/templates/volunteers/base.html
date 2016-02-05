@@ -20,15 +20,15 @@
              </a>
           </li>
           <li>
+            <a href="{{ url_for('volunteer.change_password') }}" data-toggle="tooltip_change" data-placement="bottom" title="change password">
+              <i class="fa fa-key"></i>
+             </a>
+          </li> <!-- /.dropdown -->
+          <li>
             <a href="{{ url_for('auth.logout') }}" data-toggle="tooltip_logout" data-placement="bottom" title="logout">
                <i class="fa fa-power-off"></i>
              </a>
            </li>
-           <li>
-             <a href="{{ url_for('volunteer.change_password') }}" data-toggle="tooltip_change" data-placement="bottom" title="change password">
-               <i class="fa fa-key"></i>
-              </a>
-           </li> <!-- /.dropdown -->
       </ul>
     </nav>
 {% endblock %}
