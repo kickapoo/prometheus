@@ -18,7 +18,6 @@ class Team(db.Model):
     availiable_from = db.Column(db.Date, default=now)
     availiable_to = db.Column(db.Date, default=now)
     notes = db.Column(db.Text, default=u'Add your Notes')
-    notes2 = db.Column(db.Text, default=u'Add your Notes')
     # Relations
     volunteer = db.relationship('Volunteer', backref='teams', lazy='dynamic')
     country_id = db.Column(db.Integer, db.ForeignKey('countries.id'))
