@@ -1,6 +1,8 @@
 (function(){
     $(document).ready(function(){
 
+      $("#general_message").fadeOut(2500)
+
       tinymce.init({ selector:'textarea' });
 
       // Tooltips and Init js objects
