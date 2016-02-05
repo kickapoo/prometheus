@@ -15,8 +15,8 @@ def index():
     spots_open_count = Spot.query.filter_by(status=True).count()
     spots_close_count = Spot.query.filter_by(status=False).count()
     volunteer = Volunteer.query.filter_by(email=current_user.email).first()
-    spot_latest = Spot.query.order_by(Spot.updated_at).first()
-    need_latest = Need.query.order_by(Need.updated_at).first()
+    spot_latest = Spot.query.order_by(Spot.updated_at.desc()).first()
+    need_latest = Need.query.order_by(Need.updated_at.desc()).first()
     needs = Need.query.filter_by(date=g.now.date()).all()
     last_updated = max(need_latest.updated_at, spot_latest.updated_at)
     for need in needs:
