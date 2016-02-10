@@ -14,7 +14,7 @@
                 color: {% if spot.status %} "#0a0" {% else %}'#FF0000' {% endif %},
                 size: "m"});
       L.marker([{{ spot.lat }}, {{ spot.lon }}], {icon: icon}).addTo(map)
-         .bindPopup("{{ spot.name }} has capacity {{ spot.capacity }}");
+         .bindPopup("{{ spot.name }} currently hosts about {{ spot.capacity }} persons");
     {% endfor %}
 
 </script>

@@ -92,7 +92,7 @@ class SpotForm(Form):
     lon = FloatField(u'lon', validators=[Required()])
     spottype_id = SelectField(u'Type', coerce=int, validators=[Required()])
     status = BooleanField(u'Status')
-    capacity = IntegerField(u'Capacity')
+    capacity = IntegerField(u'Hosts (number of refugees)')
     notes = TextAreaField(u'Notes', widget=TextArea(),validators=[Optional()])
 
 
