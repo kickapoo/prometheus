@@ -13,7 +13,7 @@ As a sequence of the above, Coordinators know which the Need cycle and from whic
 
 ### Screenshots
 
-![Prometheus](http://demo.prometheus.online/static/imgs/PrometheusScreenShots.png)
+![Prometheus](http://fuzzyelements.com/static/img/prometheusScreenShot.png)
 
 
 ### Demo and Real Case
