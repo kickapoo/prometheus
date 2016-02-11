@@ -93,10 +93,11 @@ For front-end the following are used:
 
 ### TODO
 
-1. Support database migrations with Flask-Migrate
-2. Support mutlilanguage with Flask-Babel
-3. Overhaul front end from someone who actually knows more html,css than backend coding.
-4. Find funding to continue adding features like Materials (Wharehouse) management or mobile application.
+1. Add Unit Test (Any project that respect it self should be include Unit Tests)
+2. Support database migrations with Flask-Migrate
+3. Support mutlilanguage with Flask-Babel
+4. Overhaul front end from someone who actually knows more html,css than backend coding.
+5. Find funding to continue adding features like Materials (Wharehouse) management or mobile application.
 
 ### Contribute
 
