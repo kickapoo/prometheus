@@ -3,6 +3,7 @@ import re
 import getpass
 
 from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
 from sqlalchemy import or_
 
 from prometheus import app, db
@@ -11,6 +12,9 @@ from prometheus.models.core import (Team, Volunteer, Spot, SpotType, Country,
                                     Need)
 
 manager = Manager(app)
+migrate = Migrate(app, db)
+
+manager.add_command('db', MigrateCommand)
 
 @manager.command
 def create_db():
