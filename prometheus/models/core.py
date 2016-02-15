@@ -151,6 +151,16 @@ class Spot(db.Model):
     def __repr__(self):
         return '<Spot {}>'.format(self.name)
 
+class SpotTrace(db.Model):
+    __tablename__ = 'spottraces'
+    id = db.Column(db.Integer, primary_key=True)
+    spot_id = db.Column(db.Integer)
+    capacity = db.Column(db.Integer)
+    timestamp = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return '<SpotTrace {}>'.format(self.capacity)
+
 
 class SpotType(db.Model):
     __tablename__ = 'spottypes'

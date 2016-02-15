@@ -1,8 +1,8 @@
 from prometheus import db
 from .. import coordinator
-from flask import render_template, url_for, redirect, flash
+from flask import g, render_template, url_for, redirect, flash
 
-from prometheus.models.core import Spot, SpotType
+from prometheus.models.core import Spot, SpotType, SpotTrace
 from ..forms import SpotForm
 
 
@@ -29,6 +29,10 @@ def update_spot(id=None):
     if form.validate_on_submit():
         spot.import_data(form.data)
         db.session.add(spot)
+        db.session.commit()
+        # Trace Spot capacity
+        st = SpotTrace(spot_id=spot.id, capacity=spot.capacity, timestamp=g.now)
+        db.session.add(st)
         db.session.commit()
         flash("<i class='fa fa-smile-o'></i> Success, form is submitted")
         return redirect(url_for('coordinator.spots'))
