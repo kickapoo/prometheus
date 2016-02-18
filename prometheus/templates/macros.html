@@ -84,14 +84,18 @@
 
 {% macro hours(user_hour_list) %}
   {% for hour in user_hour_list %}
-    {% if hour == '1' %}
-        Evening,
-    {% elif hour == '2'%}
-        Night,
-    {% elif hour == '3'%}
-      Flexible-All Day,
+    {% if hour == '5' %}
+        00:00-08:00,
     {% elif hour == '0'%}
-        Morning,
+        08:00-12:00,
+    {% elif hour == '1'%}
+        12:00-16:00,
+    {% elif hour == '2'%}
+        16:00-20:00,
+    {% elif hour == '4'%}
+        20:00-24:00,
+    {% elif hour == '3'%}
+        Not Time specific - All Day,
     {% endif %}
   {% endfor %}
 {% endmacro %}

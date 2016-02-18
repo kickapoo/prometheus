@@ -39,10 +39,12 @@ class VolunteerForm(Form):
         ('7', 'Sunday'),
     )
     HOUR_CHOICES = (
-        ('0', 'Morning'),
-        ('1', 'Evening'),
-        ('2', 'Night'),
-        ('3', 'Flexible-All Day'),
+        ('0', '00:00-08:00'),
+        ('1', '08:00-12:00'),
+        ('2', '12:00-16:00'),
+        ('3', '16:00-20:00'),
+        ('4', '20:00-24:00'),
+        ('5', 'Not Time specific - All Day')
     )
     LANGUAGES_CHOICES = (
         ('0', 'Arabic'),
@@ -98,10 +100,12 @@ class SpotForm(Form):
 
 class NeedForm(Form):
     HOUR_CHOICES = (
-        ('0', 'Morning'),
-        ('1', 'Evening'),
-        ('2', 'Night'),
-        ('3', 'Flexible-All Day'),
+        ('0', '00:00-08:00'),
+        ('1', '08:00-12:00'),
+        ('2', '12:00-16:00'),
+        ('3', '16:00-20:00'),
+        ('4', '20:00-24:00'),
+        ('5', 'Not Time specific - All Day')
     )
     hour_choices = RadioField('hours', choices=HOUR_CHOICES,
                               validators=[Optional()])
