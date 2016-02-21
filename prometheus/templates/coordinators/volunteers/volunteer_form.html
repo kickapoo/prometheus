@@ -109,7 +109,7 @@
           <fieldset>
             <legend style="font-size:18px"> System Access</legend>
             <div class="input-group input-group-sm ">
-              {{ form.access(class="form-control") }}
+              {{ form.access(class="checkbox") }}
             </div>
               {{ macros.field_errors(form.access) }}
             <br>
@@ -117,7 +117,7 @@
           <fieldset>
             <legend style="font-size:18px"> is Coordinator</legend>
             <div class="input-group input-group-sm ">
-              {{ form.is_coordinator(class="form-control") }}
+              {{ form.is_coordinator(class="checkbox") }}
             </div>
               {{ macros.field_errors(form.is_coordinator) }}
             <br>
