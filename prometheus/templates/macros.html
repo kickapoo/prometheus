@@ -84,17 +84,17 @@
 
 {% macro hours(user_hour_list) %}
   {% for hour in user_hour_list %}
-    {% if hour == '5' %}
+    {% if hour == '0' %}
         00:00-08:00,
-    {% elif hour == '0'%}
-        08:00-12:00,
     {% elif hour == '1'%}
-        12:00-16:00,
+        08:00-12:00,
     {% elif hour == '2'%}
+        12:00-16:00,
+    {% elif hour == '3'%}
         16:00-20:00,
     {% elif hour == '4'%}
         20:00-24:00,
-    {% elif hour == '3'%}
+    {% elif hour == '5'%}
         Not Time specific - All Day,
     {% endif %}
   {% endfor %}
