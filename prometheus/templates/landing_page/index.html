@@ -86,11 +86,27 @@
     <div class="col-md-4">
       <div class="chat-panel panel panel-default">
         <img style="float:left" src="{{ url_for('static', filename='imgs/chios_blueprint.png') }}" height="100px"  alt="Chios Mini Map" />
-        {% if weather %}
-          {{ macros.header_weather(weather) }}
-          {{ macros.vertical_table_weather(weather) }}
+          {% if weather %}
+            {{ macros.header_weather(weather) }}
+            {{ macros.vertical_table_weather(weather) }}
           {% endif %}
+          <hr>
         </div>
+        <div class="chat-panel panel panel-default">
+          <div class="panel-heading">
+            <strong> 6-Day Forecast </strong>
+          </div>
+          <div class="panel-body">
+            <ul class="chat">
+              {% for weather in forecast.get_weathers()[1:] %}
+              <li class="left clearfix">
+                {{ macros.header_forecast(weather) }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
         <div class="chat-panel panel panel-default">
           <div class="panel-heading">
             <i class="fa fa fa-newspaper-o"></i> Announcements <br>

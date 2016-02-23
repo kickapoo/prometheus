@@ -122,6 +122,17 @@
   </h2>
 {% endmacro %}
 
+{% macro header_forecast(weather) %}
+  <h4>
+      <span style="font-size:16px" class="text-warning">
+        {{ weather.get_reference_time('iso')[8:10] }}/{{ weather.get_reference_time('iso')[5:7] }}/{{ weather.get_reference_time('iso')[0:4] }}
+      </span>
+      <img src="http://openweathermap.org/img/w/{{weather.get_weather_icon_name()}}.png">
+      {{ weather.get_temperature(unit='celsius')['day'] }} °C |
+      <span style="font-size:16px" class="text-success">{{ weather.get_detailed_status() }}</span>
+  </h4>
+{% endmacro %}
+
 {% macro vertical_table_weather(weather) %}
   <table class="table table-striped">
     <tbody>

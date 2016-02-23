@@ -11,6 +11,7 @@ def index():
     announcements = Announcement.query.order_by(
                     Announcement.created_at.desc()).all()[:20]
     weather = owm.weather_at_coords(g.lat, g.lon).get_weather()
+    fc = owm.daily_forecast(current_app.config['AREA']).get_forecast()
     needs = Need.query.filter_by(date=g.now.date()).all()
     for need in needs:
         need.remaining = int(need.number_of_volunters) - need.volunteer.count()
@@ -27,5 +28,5 @@ def index():
                             spots_close_count=spots_close_count,
                             last_updated=last_updated,
                             announcements=announcements,
-                            weather=weather,
+                            weather=weather, forecast=fc,
                             island=island)
