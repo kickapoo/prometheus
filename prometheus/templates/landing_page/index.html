@@ -85,6 +85,63 @@
     </div>
     <div class="col-md-4">
       <div class="chat-panel panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa fa-newspaper-o"></i> Announcements <br>
+          <div class="btn-group pull-right">
+            <a onclick="location.reload();"><i class="fa fa-refresh fa-fw"></i> Refresh </a>
+          </div>
+          <br>
+        </div> <!-- /.panel-heading -->
+        <div class="panel-body">
+          <ul class="chat">
+            {% for announcement in announcements %}
+              <li class="left clearfix">
+                <span class="chat-img pull-left">
+                  {{ macros.announcement_type(announcement.announcement_choices)}}
+                </span>
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">{{ announcement.title }}</strong>
+                    <small class="pull-right text-muted">
+                      <i class="fa fa-clock-o fa-fw"></i> {{ moment(announcement.updated_at).fromTime(g.now) }}
+                    </small>
+                  </div>
+                  <p>
+                    {% if announcement.body %}
+                      <button style="border:none;" type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#announcement_{{ announcement.id }}">Read more...</button>
+                    {% endif %}
+                  </p>
+                </div>
+              </li>
+              <!-- read.more  Modal -->
+              <div id="announcement_{{ announcement.id }}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <span style="font-size:12px" class="text-success"> {{ moment(announcement.updated_at).format('MMMM Do YYYY, h:mm:ss a') }}</span>
+                      <h4 class="modal-title"> {{ announcement.title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>{{ announcement.body| safe}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+        </ul>
+      </div><!-- /.panel-body -->
+      <div class="panel-footer">
+        <div style="font-size:12px" class="help-block">
+          <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-general.png') }}" alt="" /> General
+          <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-need.png') }}" alt="" /> Need
+          <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-emergency.png') }}" alt="" />   Emergency
+        </div>
+        <div class="clearfix"></div>
+      </div><!-- /.panel-footer -->
+    </div>
+      <div class="chat-panel panel panel-default">
         <img style="float:left" src="{{ url_for('static', filename='imgs/chios_blueprint.png') }}" height="100px"  alt="Chios Mini Map" />
           {% if weather %}
             {{ macros.header_weather(weather) }}
@@ -106,64 +163,6 @@
             </ul>
           </div>
         </div>
-
-        <div class="chat-panel panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa fa-newspaper-o"></i> Announcements <br>
-            <div class="btn-group pull-right">
-              <a onclick="location.reload();"><i class="fa fa-refresh fa-fw"></i> Refresh </a>
-            </div>
-            <br>
-          </div> <!-- /.panel-heading -->
-          <div class="panel-body">
-            <ul class="chat">
-              {% for announcement in announcements %}
-                <li class="left clearfix">
-                  <span class="chat-img pull-left">
-                    {{ macros.announcement_type(announcement.announcement_choices)}}
-                  </span>
-                  <div class="chat-body clearfix">
-                    <div class="header">
-                      <strong class="primary-font">{{ announcement.title }}</strong>
-                      <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i> {{ moment(announcement.updated_at).fromTime(g.now) }}
-                      </small>
-                    </div>
-                    <p>
-                      {% if announcement.body %}
-                        <button style="border:none;" type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#announcement_{{ announcement.id }}">Read more...</button>
-                      {% endif %}
-                    </p>
-                  </div>
-                </li>
-                <!-- read.more  Modal -->
-                <div id="announcement_{{ announcement.id }}" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <span style="font-size:12px" class="text-success"> {{ moment(announcement.updated_at).format('MMMM Do YYYY, h:mm:ss a') }}</span>
-                        <h4 class="modal-title"> {{ announcement.title }}</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>{{ announcement.body| safe}}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            {% endfor %}
-          </ul>
-        </div><!-- /.panel-body -->
-        <div class="panel-footer">
-          <div style="font-size:12px" class="help-block">
-            <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-general.png') }}" alt="" /> General
-            <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-need.png') }}" alt="" /> Need
-            <img class="img-circle" src="{{ url_for('static', filename='imgs/announcement-emergency.png') }}" alt="" />   Emergency
-          </div>
-          <div class="clearfix"></div>
-        </div><!-- /.panel-footer -->
-      </div>
     </div>
   </div>
 </div>
