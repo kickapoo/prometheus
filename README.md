@@ -16,11 +16,7 @@ As a sequence of the above, Coordinators know which the Need cycle and from whic
 ![Prometheus](http://fuzzyelements.com/static/img/prometheusScreenShot.png)
 
 
-### Demo and Real Case
-
-Demo case : [demo.prometheus.online](http://demo.prometheus.online/)
-						(admin@prometheus.online, pass: admin)
-
+### Demo Case
 Chios island: [chios.prometheus.online](http://chios.prometheus.online/)
 
 ### How this project started?
